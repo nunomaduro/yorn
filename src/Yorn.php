@@ -47,14 +47,14 @@ final class Yorn
      */
     public static function import(string $module): void
     {
-        $folder = dirname(realpath(debug_backtrace()[1]['file']));
+        $folder = dirname(realpath(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2)[1]['file']));
 
         $module = "$folder/$module";
 
         if (file_exists($module . '.php')) {
-            $modules = [];
+            $modules = [$module . '.php'];
         } else {
-            $modules = glob("$module/*.jpg");
+            $modules = glob("$module/*.php");
         }
 
         foreach ($modules as $module) {
