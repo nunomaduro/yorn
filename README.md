@@ -32,6 +32,8 @@ echo sum(1, 2);
 
 ## 🚀 Quick start
 
+> Remember, this is just an experiment. Don't use this in production.
+
 ```
 # First, install:
 composer require nunomaduro/yorn
@@ -59,7 +61,7 @@ import('validators/zipCodeValidator');
 echo zipCodeValidator(8000);
 ```
 
-# ✨ Default exports
+## ✨ Default exports
 
 Of course, you may want to import all functions in a `module`:
 ```php
