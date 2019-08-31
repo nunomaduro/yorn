@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/nunomaduro/yorn/feat/first/docs/banner.png" width="400" alt="Yorn Preview">
+  <img src="https://raw.githubusercontent.com/nunomaduro/yorn/feat/first/docs/banner.png" width="700" alt="Yorn Preview">
   <p align="center">
     <a href="https://travis-ci.org/nunomaduro/yorn"><img src="https://img.shields.io/travis/nunomaduro/yorn/master.svg" alt="Build Status"></a>
     <a href="https://packagist.org/packages/nunomaduro/yorn"><img src="https://poser.pugx.org/nunomaduro/yorn/d/total.svg" alt="Total Downloads"></a>
