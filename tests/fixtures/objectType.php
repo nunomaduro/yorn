@@ -1,1 +1,0 @@
-objectType.php
