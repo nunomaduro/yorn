@@ -1,0 +1,6 @@
+.idea/*
+.idea/codeStyleSettings.xml
+composer.lock
+/playground/
+/vendor/
+.phpunit.result.cache
