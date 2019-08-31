@@ -1,7 +1,7 @@
 <?php
 
-import('../fixtures/foo');
-import('../fixtures/concerns');
+import('../../testFixtures/foo');
+import('../../testFixtures/concerns');
 
 it('imports modules', function () {
     assertEquals(foo(), 'bar');
