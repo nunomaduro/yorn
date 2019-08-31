@@ -1,6 +1,6 @@
 {
     "name": "nunomaduro/yorn",
-    "description": "The concept of modules for PHP.",
+    "description": "Modules in PHP with the `import` and `export` syntax.",
     "keywords": ["php", "modules", "package"],
     "license": "MIT",
     "authors": [
