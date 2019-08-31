@@ -15,6 +15,21 @@
 
 Before the quick start, keep in mind that a module usually contains a collection of functions, and those functions are small units of independent, reusable code that is desired to be used as the building blocks in creating a PHP application.
 
+As example, this is how a typical **Yorn** application would look like:
+```php
+# src/math/sum.php:
+<?php export(function ($one, $two) {
+    return $one + $two;
+});
+
+# src/index.php:
+<?php
+
+import('math');
+
+echo sum(1, 2);
+```
+
 ## 🚀 Quick start
 
 ```
