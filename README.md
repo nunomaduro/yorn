@@ -19,7 +19,7 @@ Before the quick start, keep in mind that a module usually contains a collection
 
 ```
 # First, install:
-composer require nunomaduro/yorn --dev
+composer require nunomaduro/yorn
 ```
 
 ## ✨ Exporting a function
