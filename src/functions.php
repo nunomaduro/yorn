@@ -5,9 +5,9 @@ declare(strict_types=1);
 use NunoMaduro\Yorn\Yorn;
 
 (function () {
-    function import(string $module): void
+    function import(string $module)
     {
-        Yorn::import($module);
+        return Yorn::import($module);
     }
 
     function export(callable $callable): void

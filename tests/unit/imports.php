@@ -1,12 +1,14 @@
 <?php
 
-import('../fixtures/foo');
-import('../fixtures/concerns');
+it('imports functions', function () {
+    $foo = import('../fixtures/functionType');
 
-it('imports modules', function () {
-    assertEquals(foo(), 'bar');
+    assertEquals($foo(), 'bar');
 });
 
 it('uses exports file', function () {
-    assertEquals(bob(1), 1);
+    $concerns = import('../fixtures/concerns');
+    $bob = $concerns->bob;
+
+    assertEquals($bob(1), 1);
 });

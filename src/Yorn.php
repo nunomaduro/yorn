@@ -29,12 +29,6 @@ final class Yorn
 
         if (! array_key_exists($module, self::$modules)) {
             self::$modules[$module] = $callable;
-
-            $name = explode('.php', basename($module))[0];
-
-            eval("function $name(...\$args) {
-                return \NunoMaduro\Yorn\Yorn::resolve('$module')(...\$args);
-            }");
         }
     }
 
@@ -43,24 +37,35 @@ final class Yorn
      *
      * @param  string  $module
      *
-     * @return void
+     * @return callable|object
      */
-    public static function import(string $module): void
+    public static function import(string $module)
     {
-        $folder = dirname(realpath(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2)[1]['file']));
+        $folder = dirname(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2)[1]['file']);
 
         $module = "$folder/$module";
 
         if (file_exists($module . '.php')) {
-            $modules = [$module . '.php'];
-        } else {
-            $modules = glob("$module/*.php");
-        }
+            $module = realpath($module. '.php');
 
-        foreach ($modules as $module) {
             if (! array_key_exists($module, self::$modules)) {
                 require $module;
             }
+
+            return self::$modules[$module];
+        } else {
+            $modules = new \stdClass();
+
+            foreach (glob("$module/*.php") as $module) {
+                $module = realpath($module);
+                if (! array_key_exists($module, self::$modules)) {
+                    require $module;
+                }
+
+                $modules->{explode('.php', basename($module))[0]} = self::$modules[$module];
+            }
+
+            return $modules;
         }
     }
 
