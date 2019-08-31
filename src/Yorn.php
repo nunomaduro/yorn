@@ -52,9 +52,9 @@ final class Yorn
         $module = "$folder/$module";
 
         if (file_exists($module . '.php')) {
-            $modules = [];
+            $modules = [$module . '.php'];
         } else {
-            $modules = glob("$module/*.jpg");
+            $modules = glob("$module/*.php");
         }
 
         foreach ($modules as $module) {
