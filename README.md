@@ -25,9 +25,9 @@ As example, this is how a typical **Yorn** application would look like:
 # src/index.php:
 <?php
 
-import('math');
+$sum = import('math/sum');
 
-echo sum(1, 2);
+echo $sum(1, 2);
 ```
 
 ## 🚀 Quick start
@@ -56,9 +56,9 @@ Importing is just about as easy as exporting from a module. Importing an exporte
 # src/index.php
 <?php
 
-import('validators/zipCodeValidator');
+$zipCodeValidator = import('validators/zipCodeValidator');
 
-echo zipCodeValidator(8000);
+echo $zipCodeValidator(8000);
 ```
 
 ## ✨ Default exports
@@ -68,9 +68,11 @@ Of course, you may want to import all functions in a `module`:
 # src/index.php
 <?php
 
-import('validators'); // zipCodeValidator is imported also here
+$validators = import('validators'); // zipCodeValidator is imported also here
 
-echo zipCodeValidator(8000);
+$zipCodeValidator = $validators->zipCodeValidator;
+
+echo $zipCodeValidator(8000);
 ```
 
 ## 💖 Support the development
