@@ -7,7 +7,7 @@
     <a href="https://packagist.org/packages/nunomaduro/yorn"><img src="https://poser.pugx.org/nunomaduro/yorn/license.svg" alt="License"></a>
   </p>
   <p align="center">
-    <strong>Modules for PHP.
+    <strong>Modules for PHP.</strong>
   </p>
 </p>
 
