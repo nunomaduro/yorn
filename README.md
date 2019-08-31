@@ -11,8 +11,9 @@
   </p>
 </p>
 
-**Yorn** was carefully crafted to simplify the autoload of modules in PHP.
-It was created by **[Nuno Maduro](https://github.com/nunomaduro)**.
+**Yorn** was carefully crafted to introduce the support for modules in **PHP** with the `import` and `export` syntax. It was created by **[Nuno Maduro](https://github.com/nunomaduro)**.
+
+Before the quick start, keep in mind that a module usually contains a collection of functions, and those functions are small units of independent, reusable code that is desired to be used as the building blocks in creating a PHP application.
 
 ## 🚀 Quick start
 
