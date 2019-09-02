@@ -12,23 +12,23 @@ final class Yorn
     /**
      * Holds the resolved modules.
      *
-     * @var array<string, callable>
+     * @var array<string, callable | string>
      */
     private static $modules = [];
 
     /**
-     * Registers the given callable as module.
+     * Registers the given exportable as module.
      *
-     * @param  callable  $callable
+     * @param  callable | string  $exportable
      *
      * @return void
      */
-    public static function export(callable $callable): void
+    public static function export($exportable): void
     {
-        $module = ModuleResolver::resolve($callable);
+        $module = ModuleResolver::resolve($exportable);
 
         if (! array_key_exists($module, self::$modules)) {
-            self::$modules[$module] = $callable;
+            self::$modules[$module] = $exportable;
         }
     }
 

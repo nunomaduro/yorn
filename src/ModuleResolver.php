@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NunoMaduro\Yorn;
 
+use ReflectionClass;
 use ReflectionFunction;
 
 /**
@@ -12,16 +13,16 @@ use ReflectionFunction;
 final class ModuleResolver
 {
     /**
-     * Resolve the FileName from the given `callback`
+     * Resolve the FileName from the given `exportable`
      *
-     * @param  callable  $callback
+     * @param  callable | string  $exportable
      *
      * @return string
      */
-    public static function resolve(callable $callback): string
+    public static function resolve($exportable): string
     {
-        $reflectionClosure = new ReflectionFunction($callback);
+        $reflectionExportable = is_callable($exportable) ? new ReflectionFunction($exportable) : new ReflectionClass($exportable);
 
-        return (string) realpath($reflectionClosure->getFileName());
+        return (string) realpath($reflectionExportable->getFileName());
     }
 }
