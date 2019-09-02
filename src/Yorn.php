@@ -74,9 +74,9 @@ final class Yorn
      *
      * @param  string  $module
      *
-     * @return callable
+     * @return callable | string
      */
-    public static function resolve(string $module): callable
+    public static function resolve(string $module)
     {
         return self::$modules[realpath($module)];
     }
