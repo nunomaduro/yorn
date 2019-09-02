@@ -44,7 +44,7 @@ composer require nunomaduro/yorn
 Any function can be exported by using the `export` function:
 ```php
 # src/validators/zipCodeValidator.php:
-<?php export(function (string $value)) {
+<?php export(function (string $value) {
     return strlen($value) === 5;
 });
 ```
