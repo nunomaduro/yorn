@@ -10,8 +10,8 @@ use NunoMaduro\Yorn\Yorn;
         return Yorn::import($module);
     }
 
-    function export(callable $callable): void
+    function export($exportable): void
     {
-        Yorn::export($callable);
+        Yorn::export($exportable);
     }
 })();
