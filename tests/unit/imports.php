@@ -6,6 +6,14 @@ it('imports functions', function () {
     assertEquals($foo(), 'bar');
 });
 
+it('imports objects', function () {
+    $foo = import('../fixtures/objectType');
+
+    $instance = new $foo('world');
+    
+    assertEquals($instance->getMessage(), 'hello world');
+});
+
 it('uses exports file', function () {
     $concerns = import('../fixtures/concerns');
     $bob = $concerns->bob;
