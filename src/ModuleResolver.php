@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NunoMaduro\Yorn;
 
+use Closure;
 use ReflectionClass;
 use ReflectionFunction;
 
@@ -15,14 +16,22 @@ final class ModuleResolver
     /**
      * Resolve the FileName from the given `exportable`
      *
-     * @param  callable | string  $exportable
+     * @param  Closure | string  $exportable
      *
      * @return string
      */
     public static function resolve($exportable): string
     {
-        $reflectionExportable = is_callable($exportable) ? new ReflectionFunction($exportable) : new ReflectionClass($exportable);
+        $reflectionExportable = $exportable instanceof Closure ? self::resolveClosure($exportable) : self::resolveClass($exportable);
 
-        return (string) realpath($reflectionExportable->getFileName());
+        return  (string) realpath( (string) $reflectionExportable->getFileName());
+    }
+
+    public static function resolveClosure(Closure $closure): ReflectionFunction  {
+        return new ReflectionFunction($closure);
+    }
+
+    public static function resolveClass(string $class): ReflectionClass {
+        return new ReflectionClass($class);
     }
 }

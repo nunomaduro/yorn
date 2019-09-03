@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace NunoMaduro\Yorn;
 
+use Closure;
+
 /**
  * @internal
  */
@@ -12,14 +14,14 @@ final class Yorn
     /**
      * Holds the resolved modules.
      *
-     * @var array<string, callable | string>
+     * @var array<string, Closure | string>
      */
     private static $modules = [];
 
     /**
      * Registers the given exportable as module.
      *
-     * @param  callable | string  $exportable
+     * @param  Closure | string  $exportable
      *
      * @return void
      */
@@ -37,7 +39,7 @@ final class Yorn
      *
      * @param  string  $module
      *
-     * @return callable|object
+     * @return Closure|string|object
      */
     public static function import(string $module)
     {
@@ -48,7 +50,7 @@ final class Yorn
         if (file_exists($module . '.php')) {
             $module = realpath($module. '.php');
 
-            if (! array_key_exists($module, self::$modules)) {
+            if (! array_key_exists((string) $module, self::$modules)) {
                 require $module;
             }
 
@@ -56,13 +58,13 @@ final class Yorn
         } else {
             $modules = new \stdClass();
 
-            foreach (glob("$module/*.php") as $module) {
-                $module = realpath($module);
-                if (! array_key_exists($module, self::$modules)) {
-                    require $module;
+            foreach ((array) glob("$module/*.php") as $foundModule) {
+                $foundModule = realpath((string) $foundModule);
+                if (! array_key_exists((string) $foundModule, self::$modules)) {
+                    require $foundModule;
                 }
 
-                $modules->{explode('.php', basename($module))[0]} = self::$modules[$module];
+                $modules->{explode('.php', basename($foundModule))[0]} = self::$modules[$foundModule];
             }
 
             return $modules;
@@ -74,7 +76,7 @@ final class Yorn
      *
      * @param  string  $module
      *
-     * @return callable | string
+     * @return Closure | string
      */
     public static function resolve(string $module)
     {
