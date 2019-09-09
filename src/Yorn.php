@@ -18,10 +18,6 @@ final class Yorn
 
     /**
      * Registers the given callable as module.
-     *
-     * @param callable $callable
-     *
-     * @return void
      */
     public static function export(callable $callable): void
     {
@@ -34,10 +30,6 @@ final class Yorn
 
     /**
      * Registers the given module, that may be a relative module.
-     *
-     * @param string $module
-     *
-     * @return callable|object
      */
     public static function import(string $module)
     {
@@ -71,10 +63,6 @@ final class Yorn
 
     /**
      * Resolves the given `module`.
-     *
-     * @param  string $module
-     *
-     * @return callable
      */
     public static function resolve(string $module): callable
     {
