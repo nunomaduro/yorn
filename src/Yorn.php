@@ -53,20 +53,20 @@ final class Yorn
             }
 
             return self::$modules[$module];
-        } else {
-            $modules = new \stdClass();
+        }
 
-            foreach (glob("$module/*.php") as $module) {
-                $module = realpath($module);
-                if (! array_key_exists($module, self::$modules)) {
-                    require $module;
-                }
+        $modules = new \stdClass();
 
-                $modules->{explode('.php', basename($module))[0]} = self::$modules[$module];
+        foreach (glob("$module/*.php") as $module) {
+            $module = realpath($module);
+            if (! array_key_exists($module, self::$modules)) {
+                require $module;
             }
 
-            return $modules;
+            $modules->{explode('.php', basename($module))[0]} = self::$modules[$module];
         }
+
+        return $modules;
     }
 
     /**
