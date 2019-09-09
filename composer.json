@@ -42,7 +42,7 @@
         "sort-packages": true,
         "preferred-install": "dist"
     },
-        "scripts": {
+    "scripts": {
         "phpstan":"phpstan analyse --ansi",
         "ecs": "ecs check src --ansi --config vendor/symplify/easy-coding-standard/config/set/clean-code.yaml",
         "pest": "pest",
