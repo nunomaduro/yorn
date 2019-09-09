@@ -19,7 +19,7 @@ final class Yorn
     /**
      * Registers the given callable as module.
      *
-     * @param  callable  $callable
+     * @param callable $callable
      *
      * @return void
      */
@@ -35,7 +35,7 @@ final class Yorn
     /**
      * Registers the given module, that may be a relative module.
      *
-     * @param  string  $module
+     * @param string $module
      *
      * @return callable|object
      */
@@ -72,7 +72,7 @@ final class Yorn
     /**
      * Resolves the given `module`.
      *
-     * @param  string  $module
+     * @param  string $module
      *
      * @return callable
      */
